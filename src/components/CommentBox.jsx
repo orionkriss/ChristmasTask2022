@@ -5,15 +5,16 @@
 //step 4. Render the CommentForm and CommentList in a parent component, and add a button to clear comments.
 import React, { Component } from "react";
 import { render } from "react-dom";
+import "./commentBox.css";
 
 //using 'extends' to utilize the already existing component class from react.
 class CommentList extends Component {
   render() {
     const keys = Object.keys(localStorage);
     return (
-      <ul>
+      <ul className="comment-list">
         {keys.map((key) => (
-          <li key={key}>
+          <li className="comment-item" key={key}>
             {localStorage.getItem(key)} ({key})
           </li>
         ))}
@@ -49,12 +50,19 @@ class MyCommentForm extends Component {
   render() {
     const { comment } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="comment-form" onSubmit={this.handleSubmit}>
         <label>
           Leave a Christmas message!
-          <input type="text" value={comment} onChange={this.handleChange} />
+          <input
+            className="comment-input"
+            type="text"
+            value={comment}
+            onChange={this.handleChange}
+          />
         </label>
-        <button type="submit">Submit</button>
+        <button className="comment-submit" type="submit">
+          Submit
+        </button>
       </form>
     );
   }
@@ -94,10 +102,12 @@ class CommentBox extends Component {
 
   render() {
     return (
-      <div>
+      <div className="comment-box">
         <MyCommentForm addComment={this.addComment} />
         <CommentList comments={this.state.comments} />
-        <button onClick={this.clearComments}>Clear comments</button>
+        <button className="clear-comments" onClick={this.clearComments}>
+          Clear comments
+        </button>
       </div>
     );
   }

@@ -13,6 +13,10 @@
   }
 }
 
+body {
+  background-image: linear-gradient(to right, #f7f7f7, #2a5298);
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
